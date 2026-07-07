@@ -6,6 +6,7 @@ import Hero from '../../components/Hero';
 import About from '../../components/About';
 import Skills from '../../components/Skills';
 import Experience from '../../components/Experience';
+import Certifications from '../../components/Certifications';
 import Projects from '../../components/Projects';
 import Education from '../../components/Education';
 import Footer from '../../components/Footer';
@@ -14,7 +15,6 @@ import RevealProvider from '../../components/RevealProvider';
 export default function HomePage() {
   return (
     <RevealProvider>
-      {/* Background poor page par fix rahega */}
       <BeamsBackground />
       
       <Header />
@@ -23,6 +23,7 @@ export default function HomePage() {
         <About />
         <Skills />
         <Experience />
+        <Certifications />
         <Projects />
         <Education />
       </main>

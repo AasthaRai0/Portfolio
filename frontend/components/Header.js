@@ -358,23 +358,13 @@ export default function Header() {
           .menu-toggle-responsive {
             display: block !important;
           }
-            header{
-    padding:0 12px !important;
-}
-
-#mainNav{
-    padding:12px 18px !important;
-    border-radius:18px !important;
-}
         }
       `}</style>
 
       <header style={headerStyle}>
         <nav id="mainNav" style={navContainerStyle}>
           {/* Logo Brand Title */}
-          <a href="#" style={logoStyle} onClick={closeMenu}>
-            Aastha Rai
-          </a>
+          
           
           {/* Navigation Drawer Content */}
           <div className="nav-collapse-responsive" style={navCollapseStyle}>
@@ -382,6 +372,7 @@ export default function Header() {
               <li><a href="#about" className="nav-link-item" onClick={closeMenu}>About</a></li>
               <li><a href="#skills" className="nav-link-item" onClick={closeMenu}>Skills</a></li>
               <li><a href="#experience" className="nav-link-item" onClick={closeMenu}>Experience</a></li>
+              <li><a href="#certifications" className="nav-link-item" onClick={closeMenu}>Certifications</a></li>
               <li><a href="#projects" className="nav-link-item" onClick={closeMenu}>Projects</a></li>
               <li><a href="#education" className="nav-link-item" onClick={closeMenu}>Education</a></li>
             </ul>

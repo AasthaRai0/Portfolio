@@ -2,31 +2,7 @@ import React from 'react';
 
 const TIMELINE = [
   {
-    date: 'Hackathon',
-    title: 'Delhi AI Grind — District Level Winner',
-    desc: 'Placed first at district level in Delhi AI Grind, building an AI-driven solution under competition constraints.',
-    certificateUrl: 'AIGRING.png',
-  },
-  {
-    date: 'Open Source · 2025',
-    title: 'Hacktoberfest 2025 — Supercontributor',
-    desc: 'Recognized as a Supercontributor for sustained, quality open-source contributions during Hacktoberfest 2025.',
-    certificateUrl: 'HACKTOBERFEST.png',
-  },
-  {
-    date: 'Hackathon',
-    title: 'Cyphothon — 2nd Place',
-    desc: 'Secured 2nd place at Cyphothon, collaborating under time pressure to design and ship a working prototype.',
-    certificateUrl: 'CYPHOTHON.png',
-  },
-  {
-    date: 'Program',
-    title: 'Dell Technologies',
-    desc: 'Completed a Dell Technologies program, adding to hands-on exposure alongside academic ML training.',
-    certificateUrl: 'DELLTECHNOLOGIES.png',
-  },
-  {
-    date: 'Internship', 
+    date: 'Internship',
     title: 'Coding Arena — Web Developer Intern',
     desc: 'Worked as a Web Developer, designing responsive interfaces, optimising front-end assets, and structuring features aligned with modern web standards.',
     certificateUrl: 'INTERNSHIP.png',
@@ -52,7 +28,7 @@ export default function Experience() {
     },
     item: {
       position: 'relative',
-      paddingBottom: '40px',
+      paddingBottom: '8px',
       width: '100%',
     },
     dot: {
@@ -105,9 +81,9 @@ export default function Experience() {
     <section className="experience" id="experience" style={styles.section}>
       <div className="wrap" style={{ width: '100%', maxWidth: '100%' }}>
         <div className="section-head reveal">
-          <div className="eyebrow">Experience &amp; Achievements</div>
-          <h2 style={{ wordBreak: 'break-word' }}>Where the work has been recognized.</h2>
-          <p style={{ wordBreak: 'break-word' }}>Alongside coursework and independent projects, here&apos;s where that work has been tested and recognized.</p>
+          <div className="eyebrow">Experience</div>
+          <h2 style={{ wordBreak: 'break-word' }}>Where I&apos;ve put the skills to work.</h2>
+          <p style={{ wordBreak: 'break-word' }}>Hands-on, professional experience alongside coursework and independent projects.</p>
         </div>
 
         <div style={styles.timeline}>
@@ -115,16 +91,16 @@ export default function Experience() {
             <div className="timeline-item reveal" key={item.title} style={styles.item}>
               {/* Custom responsive dot indicator */}
               <div style={styles.dot} />
-              
+
               <span style={styles.date}>{item.date}</span>
               <h3 style={styles.title}>{item.title}</h3>
               <p style={styles.desc}>{item.desc}</p>
-              
+
               {item.certificateUrl && (
-                <a 
-                  href={item.certificateUrl} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  href={item.certificateUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   style={styles.certificateLink}
                   className="certificate-link"
                 >

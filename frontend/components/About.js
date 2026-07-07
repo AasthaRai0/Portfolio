@@ -3,10 +3,13 @@
 import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Typewriter } from 'react-simple-typewriter';
+import Carousel from './Carousel';
 
 const BIO_PARAGRAPHS = [
-  `Hi, I'm Aastha Rai — an AI Engineering student passionate about bridging the gap between complex machine learning and beautiful, human-centric software. What started as curiosity in web development evolved into an addiction to solving puzzles and training systems to get smarter with every line of code.`,
-  `I love owning products end-to-end: wrangling messy data, building robust ML pipelines, and designing clean interfaces that real people enjoy using. Driven by strong fundamentals in Data Structures, Algorithms, and core research, I engineer clean, high-performance systems designed to solve real-world problems.`
+  `Hi, I’m Aastha Rai — a full-stack developer turning into an ML Engineer. I started out building web apps from scratch, learning early on how to ship software that real people love to use. But as I saw the power of intelligent systems, machine learning pulled me in—and I haven’t looked back.`,
+
+`Right now, I’m diving deep into the core of AI/ML: from the mathematical foundations to hands-on model training, NLP, and scalable ML pipelines. My goal is clear: leverage my strong engineering roots to build intelligent, production-ready products that bridge the gap between research and reality.`,
+ 
 ];
 
 const BIO_TEXT_FOR_SPEECH = BIO_PARAGRAPHS.join(' ');
@@ -53,13 +56,13 @@ export default function About() {
 
           {/* Typewriter text wrapping and breaking setup fixed */}
           <h2 className="about-title" style={{ wordBreak: 'break-word', overflowWrap: 'break-word', width: '100%' }}>
-            Building{' '}
+            From Web Dev to{' '}
             <span className="accent" style={{ display: 'inline', wordBreak: 'break-word' }}>
               <Typewriter
                 words={[
-                  'AI Products',
-                  'Machine Learning Solutions',
-                  'Full-Stack Applications',
+                  'AI & ML',
+                  'NLP',
+                  'Deep Learning',
                   'Intelligent Systems',
                 ]}
                 loop={0}
@@ -110,6 +113,16 @@ export default function About() {
               </motion.p>
             ))}
           </div>
+
+          <motion.div
+            style={{ marginTop: '48px', display: 'flex', justifyContent: 'center', width: '100%' }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <Carousel baseWidth={300} autoplay autoplayDelay={2600} pauseOnHover loop />
+          </motion.div>
         </motion.div>
       </div>
     </section>
