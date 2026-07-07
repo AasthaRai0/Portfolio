@@ -308,5 +308,13 @@ vec3 getNormal(vec3 pos) {
     };
   }, []);
 
-  return <div id="beamsBg" className="beams-bg" ref={holderRef} />;
+  
+return (
+  <div 
+    id="beamsBg" 
+    className="beams-bg" 
+    ref={holderRef} 
+    style={{ position: 'fixed', inset: 0, overflow: 'hidden', pointerEvents: 'none' }} 
+  />
+);
 }

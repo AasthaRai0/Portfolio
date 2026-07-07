@@ -143,7 +143,6 @@ function SkillCategoryCard({ title, iconType, tags, isSoftSkill = false }) {
 export default function Skills() {
   const styles = {
     section: {
-      padding: '120px 0',
       position: 'relative',
       // Brightness Problem Fixed: Transformed into a highly dark, consistent adaptive linear gradient
       background: 'linear-gradient(180deg, var(--bg-elevated) 0%, var(--bg) 100%)',
@@ -152,9 +151,6 @@ export default function Skills() {
       overflow: 'hidden',
     },
     wrap: {
-      maxWidth: '1180px',
-      margin: '0 auto',
-      padding: '0 32px',
       position: 'relative',
       zIndex: 2, 
     },
@@ -202,7 +198,7 @@ export default function Skills() {
 
   return (
     <section id="skills" style={styles.section}>
-      <div style={styles.wrap}>
+      <div className="wrap" style={styles.wrap}>
         
         {/* Section Header */}
         <div style={styles.sectionHead} className="reveal">

@@ -40,16 +40,17 @@ const SOCIAL_LINKS = [
 // 1. REALISTIC VECTOR AVATAR CHARACTER COMPONENT
 // ==========================================
 function AvatarCharacter({ talking = false }) {
-  const containerStyle = {
-    position: 'relative',
-    width: '320px',
-    height: '360px',
-    margin: '0 auto',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-  };
+const containerStyle = {
+  position: "relative",
+  width: "100%",
+  maxWidth: "320px",
+  height: "360px",
+  margin: "0 auto",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "flex-end",
+};
 
   const headStyle = {
     width: '135px',
@@ -394,13 +395,15 @@ export default function Hero() {
           transform: translateY(-2px);
         }
 
-        .avatar-stage {
-          position: relative;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-        
+        .avatar-stage{
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    width:100%;
+}
+
         /* Interactive dynamic stage rings with smooth spin */
         .avatar-ring {
           position: absolute;
@@ -443,16 +446,42 @@ export default function Hero() {
         }
 
         @media (max-width: 968px) {
+        
           .hero-grid {
             grid-template-columns: 1fr;
             text-align: center;
-            gap: 48px;
+            gap: 24px;
+            overflow-x:hidden;
           }
           .hero-role { margin: 0 auto 24px auto; }
           .hero-title { font-size: 2.5rem; }
           .hero-actions, .social-pill-row { justify-content: center; }
           .bg-glow-orb { width: 300px; height: 300px; }
         }
+          @media (max-width: 768px){
+
+  .avatar-ring{
+    width:260px;
+    height:260px;
+  }
+
+  .avatar-ring.two{
+    width:300px;
+    height:300px;
+  }
+    .bg-glow-orb{
+width:260px;
+height:260px;
+right:-80px;
+}
+
+.bg-glow-orb.two{
+width:220px;
+height:220px;
+left:-80px;
+}
+
+}
       `}</style>
 
       <section className="hero">

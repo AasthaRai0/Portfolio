@@ -4,8 +4,7 @@ import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Typewriter } from 'react-simple-typewriter';
 
-
-  const BIO_PARAGRAPHS = [
+const BIO_PARAGRAPHS = [
   `Hi, I'm Aastha Rai — an AI Engineering student passionate about bridging the gap between complex machine learning and beautiful, human-centric software. What started as curiosity in web development evolved into an addiction to solving puzzles and training systems to get smarter with every line of code.`,
   `I love owning products end-to-end: wrangling messy data, building robust ML pipelines, and designing clean interfaces that real people enjoy using. Driven by strong fundamentals in Data Structures, Algorithms, and core research, I engineer clean, high-performance systems designed to solve real-world problems.`
 ];
@@ -37,13 +36,14 @@ export default function About() {
   };
 
   return (
-    <section className="about" id="about">
+    <section className="about" id="about" style={{ width: '100%', overflow: 'hidden' }}>
       <div className="about-glow one"></div>
       <div className="about-glow two"></div>
 
-      <div className="wrap">
+      <div className="wrap" style={{ width: '100%', maxWidth: '100%' }}>
         <motion.div
           className="about-inner"
+          style={{ width: '100%', maxWidth: '920px', margin: '0 auto', textAlign: 'center' }}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
@@ -51,9 +51,10 @@ export default function About() {
         >
           <div className="eyebrow" style={{ justifyContent: 'center' }}>About</div>
 
-          <h2 className="about-title">
+          {/* Typewriter text wrapping and breaking setup fixed */}
+          <h2 className="about-title" style={{ wordBreak: 'break-word', overflowWrap: 'break-word', width: '100%' }}>
             Building{' '}
-            <span className="accent">
+            <span className="accent" style={{ display: 'inline', wordBreak: 'break-word' }}>
               <Typewriter
                 words={[
                   'AI Products',
@@ -71,32 +72,35 @@ export default function About() {
             </span>
           </h2>
 
-          <button
-            type="button"
-            className={`listen-btn ${isSpeaking ? 'is-active' : ''}`}
-            onClick={handleToggleSpeech}
-            aria-pressed={isSpeaking}
-          >
-            <span className="mic-icon" aria-hidden="true">
-              {isSpeaking ? (
-                <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="6" y="6" width="12" height="12" rx="2" />
-                </svg>
-              ) : (
-                <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="9" y="2" width="6" height="12" rx="3" />
-                  <path d="M5 10a7 7 0 0014 0" />
-                  <path d="M12 19v3" />
-                </svg>
-              )}
-            </span>
-            {isSpeaking ? 'Listening… tap to stop' : 'Listen to my story'}
-          </button>
+          <div style={{ display: 'flex', justifyContent: 'center', width: '100%', margin: '0 0 30px' }}>
+            <button
+              type="button"
+              className={`listen-btn ${isSpeaking ? 'is-active' : ''}`}
+              onClick={handleToggleSpeech}
+              aria-pressed={isSpeaking}
+            >
+              <span className="mic-icon" aria-hidden="true">
+                {isSpeaking ? (
+                  <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="6" y="6" width="12" height="12" rx="2" />
+                  </svg>
+                ) : (
+                  <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="9" y="2" width="6" height="12" rx="3" />
+                    <path d="M5 10a7 7 0 0014 0" />
+                    <path d="M12 19v3" />
+                  </svg>
+                )}
+              </span>
+              {isSpeaking ? 'Listening… tap to stop' : 'Listen to my story'}
+            </button>
+          </div>
 
-          <div className="about-copy">
+          <div className="about-copy" style={{ width: '100%', textAlign: 'center' }}>
             {BIO_PARAGRAPHS.map((para, i) => (
               <motion.p
                 key={i}
+                style={{ wordBreak: 'break-word', overflowWrap: 'break-word' }}
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}

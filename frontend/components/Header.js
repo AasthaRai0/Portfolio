@@ -58,12 +58,26 @@ export default function Header() {
     boxShadow: scrolled ? '0 20px 40px -15px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.1)' : 'none',
   };
 
+  const logoStyle = {
+    fontSize: '1.25rem',
+    fontWeight: 700,
+    color: '#ffffff',
+    textDecoration: 'none',
+    letterSpacing: '-0.02em',
+    background: 'linear-gradient(90deg, #fff 0%, #94a3b8 100%)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    zIndex: 106,
+  };
+
   const navCollapseStyle = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
     width: '100%',
     marginLeft: '40px',
+    // Mobile toggle support logic injection direct in javascript object
+    right: open ? '0px' : '-100%',
   };
 
   const navLinksStyle = {
@@ -93,6 +107,7 @@ export default function Header() {
     border: '1px solid rgba(255, 255, 255, 0.08)',
     textDecoration: 'none',
     transition: 'all 0.3s ease',
+    textAlign: 'center',
   };
 
   const ctaPrimaryStyle = {
@@ -107,6 +122,7 @@ export default function Header() {
     border: '1px solid rgba(255, 255, 255, 0.1)',
     transition: 'all 0.3s ease',
     cursor: 'pointer',
+    textAlign: 'center',
   };
 
   const menuToggleStyle = {
@@ -238,7 +254,7 @@ export default function Header() {
           color: #64748b;
           font-size: 0.88rem;
           margin: 0 0 24px 0;
-        }
+         }
 
         .connect-grid {
           display: flex;
@@ -303,53 +319,64 @@ export default function Header() {
           to { transform: scale(1) translateY(0); opacity: 1; }
         }
 
-        /* Mobile View Styles */
+        /* Mobile View Structure Overrides */
         @media (max-width: 968px) {
           .nav-collapse-responsive {
             position: fixed !important;
             top: 0;
-            right: ${open ? '0' : '-100%'} !important;
-            width: 300px;
+            width: 280px;
             height: 100vh;
-            background: rgba(11, 13, 25, 0.96) !important;
-            backdrop-filter: blur(32px) !important;
-            -webkit-backdrop-filter: blur(32px) !important;
+            background: rgba(11, 13, 25, 0.95) !important;
+            backdrop-filter: blur(24px) !important;
+            -webkit-backdrop-filter: blur(24px) !important;
             border-left: 1px solid rgba(255, 255, 255, 0.08);
             flex-direction: column !important;
-            align-items: flex-start !important;
+            align-items: stretch !important;
             justify-content: flex-start !important;
-            padding: 120px 40px !important;
-            gap: 40px !important;
+            padding: 100px 24px 40px !important;
+            gap: 36px !important;
             margin-left: 0 !important;
             transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
-            box-shadow: ${open ? '-20px 0 60px rgba(0, 0, 0, 0.7)' : 'none'} !important;
+            box-shadow: ${open ? '-10px 0 40px rgba(0, 0, 0, 0.5)' : 'none'} !important;
           }
           .nav-links-responsive {
             flex-direction: column !important;
-            gap: 28px !important;
+            gap: 24px !important;
             width: 100% !important;
           }
           .nav-btn-group-responsive {
             flex-direction: column !important;
             width: 100% !important;
-            gap: 16px !important;
-            margin-top: 20px;
+            gap: 12px !important;
+            margin-top: auto;
             margin-left: 0 !important;
           }
           .responsive-cta {
             width: 100% !important;
-            text-align: center;
+            display: block !important;
           }
           .menu-toggle-responsive {
             display: block !important;
           }
+            header{
+    padding:0 12px !important;
+}
+
+#mainNav{
+    padding:12px 18px !important;
+    border-radius:18px !important;
+}
         }
       `}</style>
 
       <header style={headerStyle}>
         <nav id="mainNav" style={navContainerStyle}>
+          {/* Logo Brand Title */}
+          <a href="#" style={logoStyle} onClick={closeMenu}>
+            Aastha Rai
+          </a>
           
-          {/* Navigation Items Drawer */}
+          {/* Navigation Drawer Content */}
           <div className="nav-collapse-responsive" style={navCollapseStyle}>
             <ul className="nav-links-responsive" style={navLinksStyle}>
               <li><a href="#about" className="nav-link-item" onClick={closeMenu}>About</a></li>
@@ -359,6 +386,7 @@ export default function Header() {
               <li><a href="#education" className="nav-link-item" onClick={closeMenu}>Education</a></li>
             </ul>
             
+            {/* CTA Option Blocks */}
             <div className="nav-btn-group-responsive" style={btnGroupStyle}>
               <a href="/AASTHARAI_RESUME.pdf" download className="responsive-cta cta-ghost-hover" style={ctaGhostStyle}>
                 Resume ↓
@@ -373,16 +401,16 @@ export default function Header() {
             </div>
           </div>
 
-          {/* Hamburger Button */}
+          {/* Hamburger Trigger Switcher */}
           <button
             className="menu-toggle-responsive"
             style={menuToggleStyle}
             aria-label="Toggle menu"
             onClick={() => setOpen((prev) => !prev)}
           >
-            <span style={{ ...lineBaseStyle, top: open ? '11px' : '0px', transform: open ? 'rotate(45deg)' : 'none' }}></span>
+            <span style={{ ...lineBaseStyle, top: open ? '11px' : '2px', transform: open ? 'rotate(45deg)' : 'none' }}></span>
             <span style={{ ...lineBaseStyle, top: '11px', opacity: open ? 0 : 1, transform: open ? 'scaleX(0)' : 'none' }}></span>
-            <span style={{ ...lineBaseStyle, top: open ? '11px' : '22px', transform: open ? 'rotate(-45deg)' : 'none' }}></span>
+            <span style={{ ...lineBaseStyle, top: open ? '11px' : '20px', transform: open ? 'rotate(-45deg)' : 'none' }}></span>
           </button>
         </nav>
       </header>
@@ -425,14 +453,13 @@ export default function Header() {
               {/* LeetCode */}
               <a href="https://leetcode.com/u/aastharai2906/" target="_blank" rel="noopener noreferrer" className="connect-row-item">
                 <div className="connect-icon-box">
-                  {/* Custom representation of Leetcode layout using neat vector structure */}
                   <svg viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
                 </div>
                 <span>LeetCode Profile</span>
               </a>
 
               {/* Phone Number */}
-              <a href="tel:+91XXXXXXXXXX" className="connect-row-item">
+              <a href="tel:+917011788968" className="connect-row-item">
                 <div className="connect-icon-box">
                   <svg viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                 </div>
