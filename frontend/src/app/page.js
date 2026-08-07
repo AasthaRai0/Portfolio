@@ -11,6 +11,7 @@ import Projects from '../../components/Projects';
 import Education from '../../components/Education';
 import Footer from '../../components/Footer';
 import RevealProvider from '../../components/RevealProvider';
+import Chat from '../../components/Chat';
 
 export default function HomePage() {
   return (
@@ -26,6 +27,7 @@ export default function HomePage() {
         <Certifications />
         <Projects />
         <Education />
+        <Chat />
       </main>
       <Footer />
     </RevealProvider>

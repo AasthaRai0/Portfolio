@@ -1,4 +1,19 @@
+# Node & Frontend
 node_modules/
-.env
-data/contact-submissions.json
 .DS_Store
+data/contact-submissions.json
+
+# Environment Variables (Crucial Security)
+.env
+.env*.local
+services/.env
+
+# Python & Backend
+__pycache__/
+*.py[cod]
+services/__pycache__/
+.venv/
+venv/
+
+# PDF & Uploaded Files (Optional)
+*.pdf
