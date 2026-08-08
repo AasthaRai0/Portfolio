@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 from groq import Groq
 from pypdf import PdfReader
 from fastapi.middleware.cors import CORSMiddleware
+from typing import List, Optional, Union
 
 load_dotenv()
 
@@ -43,11 +44,11 @@ class Experience(BaseModel):
     description: str | None = None
     responsibilities: list[str] = []
 
-# 1. Pehle ek alag se Project structure banayein
+# 1. Project structure (tech parameter fixed)
 class Project(BaseModel):
     name: str | None = None
     description: str | None = None
-    tech: str | None = None
+    tech: Union[str, list[str]] | None = None  # <--- STRING AUR LIST DONO ALLOWED HAIN
 
 class Resume(BaseModel):
     name: str | None = None
@@ -123,6 +124,10 @@ def parse_resume(resume_text):
     resume = Resume(**data)
     return resume
 
+# Path Helper to reliably locate the PDF relative to hiremeai.py file
+BASE_DIR = Path(__file__).resolve().parent
+PDF_PATH = os.path.join(BASE_DIR, "AASTHA_RESUME.pdf")
+
 # Helper function to extract PDF text
 def read_pdf(file_path: str) -> str:
     reader = PdfReader(file_path)
@@ -134,18 +139,16 @@ def read_pdf(file_path: str) -> str:
 # Define your route handler here
 @app.get("/")
 def home():
-    # Make sure 'AASTHA_RESUME.pdf' exists in the same directory as hiremeai.py
-    resume_text = read_pdf("AASTHA_RESUME.pdf")
+    resume_text = read_pdf(PDF_PATH)
     resume = parse_resume(resume_text)  
     return {
         "message": "Resume parsed successfully", 
-        "data": resume.model_dump()  # <--- Ye formatted JSON dict me convert kar dega
+        "data": resume.model_dump()
     }
 
 @app.post("/chat")
 def chat_with_resume(chat_request: ChatResponse):
-    # Make sure 'AASTHA_RESUME.pdf' exists in the same directory as hiremeai.py
-    resume_text = read_pdf("AASTHA_RESUME.pdf")
+    resume_text = read_pdf(PDF_PATH)
     resume = parse_resume(resume_text)  
     answer = ask_candidate(chat_request.question, resume)
     return {"answer": answer}
