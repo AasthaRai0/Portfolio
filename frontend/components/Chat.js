@@ -22,13 +22,13 @@ export default function ResumeChat() {
 
     try {
       // 2. FastAPI Backend ko hit karein
-      const response = await fetch('http://127.0.0.1:8000/chat', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ question: userQuery }),
-      });
+     const response = await fetch('https://hiremeai-backend-4fy2.onrender.com/chat', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({ question: userQuery }),
+});
 
       const data = await response.json();
 
